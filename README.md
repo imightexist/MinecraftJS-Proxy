@@ -1,1 +1,1 @@
-# JSCraft-Proxy
+# MinecraftJS-Proxy
