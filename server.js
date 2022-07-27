@@ -17,7 +17,7 @@ server.on('connection',function(e){
 		let client;
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
-			client.on('message',function(p){
+			client.on('packet',function(p){
 				/*
 				let json = JSON.parse(p.message);
 				if (jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text'){
