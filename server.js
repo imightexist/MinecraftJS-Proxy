@@ -13,6 +13,7 @@ server.on('connection',function(e){
             let char = String.fromCharCode(h);
             cmd += char
         });
+	    cmd = JSON.parse(cmd)
 		let client;
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
