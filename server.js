@@ -36,7 +36,7 @@ server.on('connection',function(e){
 		}
     });
 	e.on('close',function(){
-		client.end("Client connection closed")
+		client.end(0)
 	})
 });
 
