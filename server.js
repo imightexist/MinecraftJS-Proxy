@@ -18,7 +18,8 @@ server.on('connection',function(e){
 		
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
-			client.on('message',function(p){
+            console.log(cmd[1])
+			client.on('packet',function(p,p2){
 				/*
 				let json = JSON.parse(p.message);
 				if (jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text'){
@@ -28,7 +29,7 @@ server.on('connection',function(e){
 					e.send(JSON.stringify(['chat',json.with[0].text,json.with[1]]));
 				}
 				*/
-				e.send(JSON.stringify(['read',p]))
+				e.send(JSON.stringify(['read',p,p2]))
 			});
         }
 		if (cmd[0] == "write"){
