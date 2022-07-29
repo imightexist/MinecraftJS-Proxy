@@ -1,11 +1,12 @@
 const ws = require('ws');
 const mc = require('minecraft-protocol');
 const server = new ws.Server({
-    port:6004
+    port:3000
 });
 
 //console.warn('This is a beta, expect issues!');
 server.on('connection',function(e){
+  let client;
     e.on('message',function(msg){
         array = new Uint8Array(msg);
         let cmd = "";
@@ -14,7 +15,7 @@ server.on('connection',function(e){
             cmd += char
         });
 		cmd = JSON.parse(cmd);
-		let client;
+		
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
 			client.on('message',function(p){
