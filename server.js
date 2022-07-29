@@ -1,7 +1,7 @@
 const ws = require('ws');
 const mc = require('minecraft-protocol');
 const server = new ws.Server({
-    port:80
+    port:6004
 });
 
 //console.warn('This is a beta, expect issues!');
@@ -13,11 +13,11 @@ server.on('connection',function(e){
             let char = String.fromCharCode(h);
             cmd += char
         });
-	    cmd = JSON.parse(cmd)
+		cmd = JSON.parse(cmd);
 		let client;
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
-			client.on('packet',function(p){
+			client.on('message',function(p){
 				/*
 				let json = JSON.parse(p.message);
 				if (jsonMsg.translate == 'chat.type.announcement' || jsonMsg.translate == 'chat.type.text'){
@@ -34,6 +34,9 @@ server.on('connection',function(e){
 			client.write(cmd[1],cmd[2]);
 		}
     });
+	e.on('close',function(){
+		client.end("Client connection closed")
+	})
 });
 
 function decodeCommand(cypher) {
