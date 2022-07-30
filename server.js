@@ -18,7 +18,7 @@ server.on('connection',function(e){
 		
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
-            console.log(cmd[1])
+            //console.log(cmd[1])
 			client.on('packet',function(p,p2){
 				/*
 				let json = JSON.parse(p.message);
