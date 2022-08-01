@@ -18,7 +18,7 @@ server.on('connection',function(e){
 		
         if (cmd[0] == "play"){
             client = mc.createClient(cmd[1]);
-            require('fs').unlinkSync('launcher_accounts.json')
+            //require('fs').unlinkSync('launcher_accounts.json')
             //console.log(cmd[1])
 			client.on('packet',function(p,p2){
 				/*
